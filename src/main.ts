@@ -6,6 +6,7 @@ const negativeColor = 'rgb(255, 35, 65)';
 
 const circles = document.getElementById('circles') as HTMLCanvasElement;
 const comments = document.getElementById('comments')!;
+const code = document.getElementById('code')!;
 
 const gap = 2;
 const maxRadius = 10;
@@ -14,6 +15,7 @@ const pixelSize = (size - 1) * gap + size * 2 * maxRadius;
 
 let startTime = Date.now();
 
+// Create and position all the circle elements
 function prepareSVG() {
     circles.setAttribute('viewBox', `0 0 ${pixelSize} ${pixelSize}`);
     const start = maxRadius;
@@ -36,6 +38,12 @@ function evaluate(t: number, x: number, y: number): number {
     return Math.sin(t * 2 - x / 3 - y);
 }
 
+// Re-initialise to run a new program
+function restart() {
+    startTime = Date.now();
+}
+
+// Update the size and color of all circles according to the program
 function update() {
     const t = (Date.now() - startTime) / 1000;
     for (let i = 0; i < size * size; i++) {
@@ -57,6 +65,13 @@ function update() {
     requestAnimationFrame(update);
 }
 
+// Set up page
 comments.textContent = welcomeText + descriptionText;
 prepareSVG();
+
+// Start rendering
 requestAnimationFrame(update);
+
+// Reset when code is updated
+code.addEventListener('input', restart);
+
