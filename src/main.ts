@@ -1,8 +1,8 @@
 const svgNS = 'http://www.w3.org/2000/svg';
 const welcomeText = '\\ Welcome to TXYBNIZ\n';
 const descriptionText = '\\ A creative coding playground';
-const positiveColor = 'rgb(255, 255, 255)';
-const negativeColor = 'rgb(255, 35, 65)';
+
+import { colors } from './settings';
 
 const circles = document.getElementById('circles') as HTMLCanvasElement;
 const comments = document.getElementById('comments')!;
@@ -29,7 +29,7 @@ function prepareSVG() {
         newCirc.setAttribute('cx', `${start + step * x}`);
         newCirc.setAttribute('cy', `${start + step * y}`);
         newCirc.setAttribute('r', `${maxRadius}`);
-        newCirc.setAttribute('fill', positiveColor);
+        newCirc.setAttribute('fill', colors.positive);
         circles.appendChild(newCirc);
     }
 }
@@ -51,11 +51,11 @@ function update() {
         const y = Math.floor(i / size);
 
         let value = evaluate(t, x, y);
-        let color = positiveColor;
+        let color = colors.positive;
         value = Math.max(-1, Math.min(1, value));
         if (value < 0) {
             value *= -1;
-            color = negativeColor;
+            color = colors.negative;
         }
         
         const circle = circles.children.item(i);

@@ -1,16 +1,33 @@
+* {
+    box-sizing: border-box;
+};
+
 body {
-    background: rgb(0, 0, 0);
-    color: rgb(255, 255, 255);
+    background: var(--background);
+    color: var(--positive);
     font-family: 'JetBrains Mono', monospace;
 
     margin: 0;
     height: 100vh;
+    overflow: hidden;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 48px;
+}
+
+.material-symbols-outlined {
+    font-size: 32px;
+}
+
+#settings-icon {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+
+    cursor: pointer;
 }
 
 #circles {
@@ -22,7 +39,7 @@ body {
 
 #comments {
     font-weight: bold;
-    color: rgb(255, 35, 65);
+    color: var(--negative);
 
     white-space: pre-line;
 }
@@ -38,4 +55,46 @@ body {
     padding: 0;
 
     width: 32ch;
+}
+
+#settings {
+    position: absolute;
+    bottom: -300px;
+    left: 0;
+    right: 0;
+    height: 300px;
+
+    background: var(--background);
+    border-top: 1px solid white;
+
+    padding: 1em;
+
+    display: grid;
+    grid-template-columns: repeat(2, min-content);
+    grid-auto-rows: min-content;
+    gap: 6px;
+
+    transition: bottom 0.5s;
+    &.open {
+        bottom: 0;
+    }
+}
+
+.color-wrap {
+    height: 1.5em;
+    border: 1px solid white;
+    border-radius: 4px;
+
+    input {
+        opacity: 0;
+        position: relative;
+        top: -5px;
+    }
+
+    $colors: background, positive, negative;
+    @each $color in $colors {
+        &.#{$color} {
+            background: var(--#{$color});
+        }
+    }
 }

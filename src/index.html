@@ -8,15 +8,28 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@32,200,0,0" />
 
         <link rel="stylesheet" href="style.scss">
         <script type="module" src="main.ts"></script>
     </head>
     <body>
+        <span id="settings-icon">
+            <span class="material-symbols-outlined">settings</span>
+        </span>
         <svg xmlns="http://www.w3.org/2000/svg" id="circles"></svg>
         <div id="code-block">
             <div id="comments"></div>
             <input id="code" type="text" value="foo">
+        </div>
+
+        <div id="settings">
+            <label for="background">Background:</label>
+            <div class="color-wrap background"><input type="color" id="background"></div>
+            <label for="positive">Positive:</label>
+            <div class="color-wrap positive"><input type="color" id="positive"></div>
+            <label for="negative">Negative:</label>
+            <div class="color-wrap negative"><input type="color" id="negative"></div>
         </div>
     </body>
 </html>
