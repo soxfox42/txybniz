@@ -1,0 +1,13 @@
+{
+  "name": "txybniz",
+  "description": "tixy.land x IBNIZ",
+  "author": "Finn Coffey",
+  "license": "MIT",
+  "source": "src/index.html",
+  "scripts": {
+    "start": "parcel"
+  },
+  "devDependencies": {
+    "parcel": "^2.8.3"
+  }
+}
