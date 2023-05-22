@@ -4,10 +4,19 @@
   "author": "Finn Coffey",
   "license": "MIT",
   "source": "src/index.html",
+  "targets": {
+    "default": {
+      "publicUrl": "/txybniz/"
+    }
+  },
   "scripts": {
-    "start": "parcel"
+    "start": "parcel",
+    "predeploy": "rm -rf dist && parcel build",
+    "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
+    "@parcel/transformer-sass": "^2.8.3",
+    "gh-pages": "^5.0.0",
     "parcel": "^2.8.3"
   }
 }
