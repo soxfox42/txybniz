@@ -22,12 +22,16 @@ body {
     font-size: 32px;
 }
 
-#settings-icon {
+#icons {
     position: absolute;
     top: 32px;
     right: 32px;
 
     cursor: pointer;
+
+    a {
+        color: white;
+    }
 }
 
 #circles {
