@@ -159,11 +159,11 @@ export class VM {
                 break;
             case ')':
                 [a] = this.pop(1);
-                this.push(this.stack[this.stack.length - 1 - a]);
+                this.push(this.stack[this.stack.length - 1 - (a / FIX)]);
                 break;
             case '(':
                 [a, b] = this.pop(2);
-                this.stack[this.stack.length - 2 - b] = a;
+                this.stack[this.stack.length - 2 - (b / FIX)] = a;
                 break;
             case ' ':
             case ',':
