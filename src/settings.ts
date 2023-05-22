@@ -29,6 +29,12 @@ updateCSSVars();
 
 const settingsMenu = document.getElementById('settings')!;
 const settingsIcon = document.getElementById('settings-icon')!;
+let settingsTimer: number | undefined;
 settingsIcon.addEventListener('click', () => {
-    settingsMenu.classList.toggle('open');
+    if (settingsMenu.classList.toggle('open')) {
+        settingsTimer = setTimeout(() => settingsMenu.classList.add('disabled'), 1000);
+    } else {
+        settingsMenu.classList.remove('disabled');
+        clearTimeout(settingsTimer);
+    }
 });

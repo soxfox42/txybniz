@@ -82,6 +82,10 @@ body {
     &.open {
         bottom: 0;
     }
+
+    &.disabled {
+        display: none;
+    }
 }
 
 .color-wrap {
