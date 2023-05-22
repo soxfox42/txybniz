@@ -32,9 +32,12 @@ const settingsIcon = document.getElementById('settings-icon')!;
 let settingsTimer: number | undefined;
 settingsIcon.addEventListener('click', () => {
     if (settingsMenu.classList.toggle('open')) {
-        settingsTimer = setTimeout(() => settingsMenu.classList.add('disabled'), 1000);
-    } else {
         settingsMenu.classList.remove('disabled');
-        clearTimeout(settingsTimer);
+        if (settingsTimer) {
+            clearTimeout(settingsTimer);
+        }
+    } else {
+        // Hide settings drawer after a moment to prevent mobile layout issues
+        settingsTimer = setTimeout(() => settingsMenu.classList.add('disabled'), 1000);
     }
 });
