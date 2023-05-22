@@ -12,3 +12,6 @@ jobs:
         with:
           node-version: current
       - run: npm deploy
+      - uses: actions/upload-pages-artifact@v1
+        with:
+          path: dist/

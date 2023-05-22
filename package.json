@@ -11,12 +11,10 @@
   },
   "scripts": {
     "start": "parcel",
-    "predeploy": "rm -rf dist && parcel build",
-    "deploy": "gh-pages -d dist"
+    "build": "rm -rf dist && parcel build"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.8.3",
-    "gh-pages": "^5.0.0",
     "parcel": "^2.8.3"
   }
 }
