@@ -11,6 +11,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: current
+      - run: npm install
       - run: npm run build
       - uses: actions/upload-pages-artifact@v1
         with:
