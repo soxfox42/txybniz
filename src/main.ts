@@ -3,17 +3,18 @@ const welcomeText = '\\ Welcome to TXYBNIZ\n';
 const descriptionText = '\\ A creative coding playground';
 
 import { colors } from './settings';
+import { VM } from './vm';
 
 const circles = document.getElementById('circles') as HTMLCanvasElement;
 const comments = document.getElementById('comments')!;
-const code = document.getElementById('code')!;
+const code = document.getElementById('code') as HTMLInputElement;
 
 const gap = 2;
 const maxRadius = 10;
 const size = 16;
 const pixelSize = (size - 1) * gap + size * 2 * maxRadius;
 
-let startTime = Date.now();
+let startTime: number, vm: VM;
 
 // Create and position all the circle elements
 function prepareSVG() {
@@ -35,11 +36,18 @@ function prepareSVG() {
 }
 
 function evaluate(t: number, x: number, y: number): number {
-    return Math.sin(t * 2 - x / 3 - y);
+    vm.stack = [t * 65536 | 0, y * 65536 | 0, x * 65536 | 0];
+    try {
+        vm.run();
+    } catch {
+        return 0;
+    }
+    return vm.stack[vm.stack.length - 1] / 65536;
 }
 
 // Re-initialise to run a new program
 function restart() {
+    vm = new VM(code.value);
     startTime = Date.now();
 }
 
@@ -47,8 +55,11 @@ function restart() {
 function update() {
     const t = (Date.now() - startTime) / 1000;
     for (let i = 0; i < size * size; i++) {
-        const x = i % size;
-        const y = Math.floor(i / size);
+        let x = i % size;
+        let y = Math.floor(i / size);
+
+        x = x / (size - 1) * 2 - 1;
+        y = y / (size - 1) * 2 - 1;
 
         let value = evaluate(t, x, y);
         let color = colors.positive;
@@ -70,6 +81,7 @@ comments.textContent = welcomeText + descriptionText;
 prepareSVG();
 
 // Start rendering
+restart();
 requestAnimationFrame(update);
 
 // Reset when code is updated
