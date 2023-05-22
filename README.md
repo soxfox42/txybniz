@@ -16,33 +16,33 @@ The only operation that is more than one character is the immediate value operat
 
 Character | Operation    | Notes
 --------- | -----------  | -----
-+         | Add          |
--         | Subtract     |
-*         | Multiply     |
-/         | Divide       | If second input is 0, result is 0.
-%         | Modulo       | If second input is 0, result is 0.
-%         | Square Root  | If input is negative, result is 0.
-|
-&         | And          |
-|         | Or           |
-^         | Xor          |
-r         | Right Rotate |
-l         | Left Shift   |
-~         | Not          |
-|
-s         | Sin          | sin(a * 2PI)
-a         | Atan2        | atan2(a, b) / 2PI
-|
-<         | Is Negative  | If input is positive, result is 0, otherwise input.
->         | Is Positive  | If input is negative, result is 0, otherwise input.
-=         | Is Zero      | If input is 0, result is 1, otherwise 0.
-|
-d         | Duplicate    |
-p         | Pop          |
-x         | Exchange     |
-v         | Rotate       | Move third element to top of stack
-)         | Pick         | Copy value from position on stack
-(         | Bury         | Overwrite position on stack with value
+`+`       | Add          |
+`-`       | Subtract     |
+`*`       | Multiply     |
+`/`       | Divide       | If second input is 0, result is 0.
+`%`       | Modulo       | If second input is 0, result is 0.
+`q`       | Square Root  | If input is negative, result is 0.
+&nbsp; |
+`&`       | And          |
+`\|`      | Or           |
+`^`       | Xor          |
+`r`       | Right Rotate |
+`l`       | Left Shift   |
+`~`       | Not          |
+&nbsp; |
+`s`       | Sin          | sin(a * 2PI)
+`a`       | Atan2        | atan2(a, b) / 2PI
+&nbsp; |
+`<`       | Is Negative  | If input is positive, result is 0, otherwise input.
+`>`       | Is Positive  | If input is negative, result is 0, otherwise input.
+`=`       | Is Zero      | If input is 0, result is 1, otherwise 0.
+&nbsp; |
+`d`       | Duplicate    |
+`p`       | Pop          |
+`x`       | Exchange     |
+`v`       | Rotate       | Move third element to top of stack
+`)`       | Pick         | Copy value from position on stack
+`(`       | Bury         | Overwrite position on stack with value
 
 ## Running
 
