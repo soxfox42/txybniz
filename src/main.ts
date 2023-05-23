@@ -80,6 +80,7 @@ function saveCode(code: string) {
     const url = new URL(window.location.href);
     url.searchParams.set('code', code);
     window.history.replaceState(null, '', url);
+    navigator.clipboard.writeText(url.href);
 }
 
 // Set up page
