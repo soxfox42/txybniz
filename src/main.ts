@@ -76,9 +76,22 @@ function update() {
     requestAnimationFrame(update);
 }
 
+function saveCode(code: string) {
+    const url = new URL(window.location.href);
+    url.searchParams.set('code', code);
+    window.history.replaceState(null, '', url);
+}
+
 // Set up page
 comments.textContent = welcomeText + descriptionText;
 prepareSVG();
+
+// Load code from URL if given
+const url = new URL(window.location.href);
+const newCode = url.searchParams.get('code');
+if (newCode) {
+    code.value = newCode;
+}
 
 // Start rendering
 restart();
@@ -86,4 +99,9 @@ requestAnimationFrame(update);
 
 // Reset when code is updated
 code.addEventListener('input', restart);
+code.addEventListener('keypress', e => {
+    if (e.key === 'Enter') {
+        saveCode((e.target as HTMLInputElement).value);
+    }
+});
 
