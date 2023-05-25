@@ -31,13 +31,13 @@ const settingsMenu = document.getElementById('settings')!;
 const settingsIcon = document.getElementById('settings-icon')!;
 let settingsTimer: number | undefined;
 settingsIcon.addEventListener('click', () => {
-    if (settingsMenu.classList.toggle('open')) {
-        settingsMenu.classList.remove('disabled');
-        if (settingsTimer) {
-            clearTimeout(settingsTimer);
-        }
-    } else {
-        // Hide settings drawer after a moment to prevent mobile layout issues
+    if (settingsMenu.classList.contains('open')) {
+        settingsMenu.classList.remove('open');
+        clearTimeout(settingsTimer);
         settingsTimer = setTimeout(() => settingsMenu.classList.add('disabled'), 1000);
+    } else {
+        settingsMenu.classList.remove('disabled');
+        clearTimeout(settingsTimer);
+        settingsTimer = setTimeout(() => settingsMenu.classList.add('open'), 10);
     }
 });
