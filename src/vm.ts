@@ -84,11 +84,11 @@ export class VM {
                 break;
             case '/':
                 [a, b] = this.pop(2);
-                this.push(a * FIX / b);
+                this.push(b === 0 ? 0 : a * FIX / b);
                 break;
             case '%':
                 [a, b] = this.pop(2);
-                this.push(a % b);
+                this.push(b === 0 ? 0 : a % b);
                 break;
             case 'q':
                 [a] = this.pop(1);
