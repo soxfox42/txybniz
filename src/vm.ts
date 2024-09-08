@@ -114,7 +114,7 @@ export class VM {
                 [a, b] = this.pop(2);
                 this.push(a << (b / FIX));
                 break;
-            case 'l':
+            case '~':
                 [a] = this.pop(1);
                 this.push(~a);
                 break;
